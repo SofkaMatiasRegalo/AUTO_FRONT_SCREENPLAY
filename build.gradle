@@ -1,0 +1,64 @@
+plugins {
+    id 'java'
+    id 'net.serenity-bdd.serenity-gradle-plugin' version '4.2.9'
+}
+
+group = 'com.autofrontscreenplay'
+version = '1.0.0'
+
+java {
+    sourceCompatibility = JavaVersion.VERSION_17
+    targetCompatibility = JavaVersion.VERSION_17
+}
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    // Serenity BDD + Screenplay + Cucumber + WebDriver
+    testImplementation 'net.serenity-bdd:serenity-core:4.2.9'
+    testImplementation 'net.serenity-bdd:serenity-screenplay:4.2.9'
+    testImplementation 'net.serenity-bdd:serenity-screenplay-webdriver:4.2.9'
+    testImplementation 'net.serenity-bdd:serenity-cucumber:4.2.9'
+    testImplementation 'net.serenity-bdd:serenity-ensure:4.2.9'
+
+    // Cucumber
+    testImplementation 'io.cucumber:cucumber-java:7.18.0'
+    testImplementation 'io.cucumber:cucumber-junit-platform-engine:7.18.0'
+
+    // JUnit 5
+    testImplementation 'org.junit.jupiter:junit-jupiter:5.11.0'
+    testImplementation 'org.junit.platform:junit-platform-launcher:1.11.0'
+    testImplementation 'org.junit.platform:junit-platform-suite:1.11.0'
+
+    // WebDriver — Selenium + WebDriverManager
+    testImplementation 'io.github.bonigarcia:webdrivermanager:5.9.2'
+    testImplementation 'org.seleniumhq.selenium:selenium-java:4.24.0'
+
+    // Assertions
+    testImplementation 'org.assertj:assertj-core:3.26.3'
+}
+
+test {
+    useJUnitPlatform()
+    testLogging {
+        events 'passed', 'skipped', 'failed'
+    }
+    systemProperty 'cucumber.junit-platform.naming-strategy', 'long'
+}
+
+serenity {
+    reports {
+        outputDirectory = 'target/site/serenity'
+    }
+    testRoot = 'src/test/java'
+    requirementsDir = 'src/test/resources/features'
+}
+
+// Convenience tasks
+tasks.register('generateReport') {
+    group = 'serenity'
+    description = 'Generate Serenity BDD HTML report'
+    dependsOn 'test', 'aggregate'
+}

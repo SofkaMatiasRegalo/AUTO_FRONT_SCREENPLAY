@@ -3,7 +3,7 @@ name: QA Automation Engineer
 description: Especialista en estrategia QA, pruebas E2E, y automatización Frontend usando Java, Serenity BDD, Cucumber y Gradle. Redacta Gherkin declarativo basado en comportamiento e implementa el patrón Screenplay (Actores, Tareas, Acciones, Preguntas).
 model: Claude Sonnet 4.6 (copilot)
 tools:
-  - edit/createFiles
+  - edit/createFile
   - edit/editFiles
   - read/readFile
   - search/listDirectory
