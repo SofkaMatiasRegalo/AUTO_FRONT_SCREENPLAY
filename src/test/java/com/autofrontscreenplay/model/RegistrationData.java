@@ -1,7 +1,9 @@
-package com.autofrontscreenplay.screenplay.model;
+package com.autofrontscreenplay.model;
 
 /**
- * Modelo de datos: información de registro de nuevo usuario.
+ * Value object: RegistrationData
+ * Encapsula los datos del formulario de registro de nuevo usuario.
+ * confirmPassword es solo validación frontend y NO se envía al backend.
  */
 public class RegistrationData {
 
@@ -21,8 +23,19 @@ public class RegistrationData {
         return new RegistrationData(username, email, password, confirmPassword);
     }
 
-    public String getUsername() { return username; }
-    public String getEmail() { return email; }
-    public String getPassword() { return password; }
-    public String getConfirmPassword() { return confirmPassword; }
+    public String getUsername() {
+        return username;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public String getConfirmPassword() {
+        return confirmPassword;
+    }
 }

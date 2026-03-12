@@ -1,13 +1,13 @@
-package com.autofrontscreenplay.screenplay.tasks;
+package com.autofrontscreenplay.tasks;
 
-import com.autofrontscreenplay.screenplay.model.UserCredentials;
-import com.autofrontscreenplay.screenplay.ui.LoginUI;
+import com.autofrontscreenplay.model.UserCredentials;
+import com.autofrontscreenplay.ui.LoginUI;
 import net.serenitybdd.screenplay.Actor;
 import net.serenitybdd.screenplay.Task;
 import net.serenitybdd.screenplay.Tasks;
 import net.serenitybdd.screenplay.actions.Click;
 import net.serenitybdd.screenplay.actions.Enter;
-import net.thucydides.model.annotations.Step;
+import net.serenitybdd.annotations.Step;
 
 /**
  * Task: IniciarSesion

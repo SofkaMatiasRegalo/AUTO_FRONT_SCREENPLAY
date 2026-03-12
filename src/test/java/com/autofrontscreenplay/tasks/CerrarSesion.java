@@ -1,11 +1,11 @@
-package com.autofrontscreenplay.screenplay.tasks;
+package com.autofrontscreenplay.tasks;
 
-import com.autofrontscreenplay.screenplay.ui.NavBarUI;
+import com.autofrontscreenplay.ui.NavBarUI;
 import net.serenitybdd.screenplay.Actor;
 import net.serenitybdd.screenplay.Task;
 import net.serenitybdd.screenplay.Tasks;
 import net.serenitybdd.screenplay.actions.Click;
-import net.thucydides.model.annotations.Step;
+import net.serenitybdd.annotations.Step;
 
 /**
  * Task: CerrarSesion

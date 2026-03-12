@@ -1,10 +1,11 @@
-package com.autofrontscreenplay.screenplay.tasks;
+package com.autofrontscreenplay.hooks;
 
+import com.autofrontscreenplay.util.Constantes;
 import net.serenitybdd.screenplay.Actor;
 import net.serenitybdd.screenplay.Task;
 import net.serenitybdd.screenplay.Tasks;
 import net.serenitybdd.screenplay.actions.Open;
-import net.thucydides.model.annotations.Step;
+import net.serenitybdd.annotations.Step;
 
 /**
  * Task: NavegarsA
@@ -20,11 +21,11 @@ public class NavegarsA implements Task {
     }
 
     public static NavegarsA laPaginaDeLogin() {
-        return Tasks.instrumented(NavegarsA.class, "/login");
+        return Tasks.instrumented(NavegarsA.class, Constantes.PATH_LOGIN);
     }
 
     public static NavegarsA laPaginaDeRegistro() {
-        return Tasks.instrumented(NavegarsA.class, "/register");
+        return Tasks.instrumented(NavegarsA.class, Constantes.PATH_REGISTER);
     }
 
     public static NavegarsA laRuta(String path) {
@@ -35,7 +36,7 @@ public class NavegarsA implements Task {
     @Override
     public <T extends Actor> void performAs(T actor) {
         actor.attemptsTo(
-            Open.url(System.getProperty("webdriver.base.url", "http://localhost:5173") + path)
+            Open.url(System.getProperty(Constantes.SYSTEM_PROPERTY_BASE_URL, Constantes.BASE_URL) + path)
         );
     }
 }

@@ -1,4 +1,4 @@
-package com.autofrontscreenplay.screenplay.questions;
+package com.autofrontscreenplay.questions;
 
 import net.serenitybdd.screenplay.Actor;
 import net.serenitybdd.screenplay.Question;

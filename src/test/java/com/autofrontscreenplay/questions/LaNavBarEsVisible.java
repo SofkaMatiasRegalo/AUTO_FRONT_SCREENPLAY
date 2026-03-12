@@ -1,6 +1,7 @@
-package com.autofrontscreenplay.screenplay.questions;
+package com.autofrontscreenplay.questions;
 
-import com.autofrontscreenplay.screenplay.ui.NavBarUI;
+import com.autofrontscreenplay.ui.NavBarUI;
+
 import net.serenitybdd.screenplay.Actor;
 import net.serenitybdd.screenplay.Question;
 import net.serenitybdd.screenplay.questions.Visibility;

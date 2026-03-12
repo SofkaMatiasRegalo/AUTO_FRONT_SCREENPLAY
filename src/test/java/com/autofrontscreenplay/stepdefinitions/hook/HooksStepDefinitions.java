@@ -1,4 +1,4 @@
-package com.autofrontscreenplay.stepdefinitions;
+package com.autofrontscreenplay.stepdefinitions.hook;
 
 import io.cucumber.java.After;
 import io.cucumber.java.Before;

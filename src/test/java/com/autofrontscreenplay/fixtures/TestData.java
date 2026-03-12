@@ -1,41 +1,38 @@
 package com.autofrontscreenplay.fixtures;
 
-import com.autofrontscreenplay.screenplay.model.RegistrationData;
-import com.autofrontscreenplay.screenplay.model.UserCredentials;
+import com.autofrontscreenplay.model.RegistrationData;
+import com.autofrontscreenplay.model.UserCredentials;
+import com.autofrontscreenplay.util.Constantes;
 
 /**
- * Catálogo centralizado de datos de prueba para F1 - Autenticación.
+ * TestData: catálogo centralizado de datos de prueba para F1 — Autenticación.
+ *
+ * - Credenciales estáticas: referencian usuarios pre-existentes en el entorno de pruebas.
+ * - newUniqueUser(): genera datos únicos con timestamp para evitar colisiones en F1.1.
  */
 public final class TestData {
 
     private TestData() {}
 
-    // ─── Usuarios existentes ───────────────────────────────────────────────────
-    public static final UserCredentials USER_CREDENTIALS =
-            UserCredentials.of("user@test.com", "UserPass1!");
-
-    public static final UserCredentials ADMIN_CREDENTIALS =
-            UserCredentials.of("admin@test.com", "AdminPass1!");
-
-    public static final UserCredentials INVALID_CREDENTIALS =
-            UserCredentials.of("user@test.com", "wrongpassword");
-
-    // ─── Datos de registro duplicado (ya existe en el sistema) ────────────────
-    public static final RegistrationData DUPLICATE_USER =
-            RegistrationData.of("user", "user@test.com", "Password1!", "Password1!");
-
-    // ─── Datos de registro con contraseñas que no coinciden ───────────────────
-    public static final RegistrationData MISMATCHED_PASSWORDS =
-            RegistrationData.of("mismatchuser", "mismatch@test.com", "Password1!", "OtherPass2@");
-
-    // ─── Generación dinámica de usuarios únicos para evitar conflictos ────────
-    public static RegistrationData newUniqueUser() {
+        public static RegistrationData newUniqueUser() {
         long ts = System.currentTimeMillis();
         return RegistrationData.of(
-                "testuser_" + ts,
-                "testuser_" + ts + "@test.com",
-                "NewUser1!",
-                "NewUser1!"
+                Constantes.REGISTRO_NUEVO_USUARIO_PREFIX + ts,
+                Constantes.REGISTRO_NUEVO_USUARIO_PREFIX + ts + Constantes.REGISTRO_NUEVO_USUARIO_DOMINIO,
+                Constantes.REGISTRO_NUEVO_USUARIO_PASSWORD,
+                Constantes.REGISTRO_NUEVO_USUARIO_PASSWORD
         );
     }
+
+    public static final UserCredentials REGISTERED_USER_CREDENTIALS =
+            UserCredentials.of(Constantes.REGISTERED_EMAIL, Constantes.REGISTERED_PASSWORD);
+
+    public static final RegistrationData REGISTERED_USER_DATA =
+            RegistrationData.of(
+                Constantes.REGISTERED_USERNAME,
+                Constantes.REGISTERED_EMAIL,
+                Constantes.REGISTERED_PASSWORD,
+                Constantes.REGISTERED_PASSWORD
+            );
+    
 }

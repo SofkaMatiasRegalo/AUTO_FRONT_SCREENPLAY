@@ -1,19 +1,14 @@
-package com.autofrontscreenplay.screenplay.tasks;
+package com.autofrontscreenplay.tasks;
 
-import com.autofrontscreenplay.screenplay.model.RegistrationData;
-import com.autofrontscreenplay.screenplay.ui.RegisterUI;
+import com.autofrontscreenplay.model.RegistrationData;
+import com.autofrontscreenplay.ui.RegisterUI;
 import net.serenitybdd.screenplay.Actor;
 import net.serenitybdd.screenplay.Task;
 import net.serenitybdd.screenplay.Tasks;
 import net.serenitybdd.screenplay.actions.Click;
 import net.serenitybdd.screenplay.actions.Enter;
-import net.thucydides.model.annotations.Step;
+import net.serenitybdd.annotations.Step;
 
-/**
- * Task: RegistrarNuevoUsuario
- * Responsabilidad ÚNICA: completar y enviar el formulario de registro.
- * No contiene localizadores (delegados a RegisterUI) ni aserciones.
- */
 public class RegistrarNuevoUsuario implements Task {
 
     private final RegistrationData data;

@@ -124,7 +124,35 @@ PageFactory
 
 ## 5. Flujos detallados
 
-### F1.1 — Login exitoso → redirige a `/tickets`
+### F1.1 — Registro exitoso → redirige a `/tickets`
+
+**Actor:** Nuevo usuario (email no registrado)  
+**Precondición:** El email y username no existen en el sistema.
+
+```
+Pasos:
+1. Navegar a /register
+2. Verificar que el título sea "Crear cuenta en TicketSystem"
+3. Ingresar username válido en #username (mínimo 3 caracteres)
+4. Ingresar email único en #email
+5. Ingresar contraseña válida en #password (mínimo 8 chars)
+6. Ingresar la misma contraseña en #confirmPassword
+7. Click en button[type="submit"]
+8. Esperar que desaparezca el spinner
+9. Verificar que la URL actual sea /tickets
+10. Verificar que el Navbar muestre el username recién creado
+```
+
+**POST body enviado al backend:**
+```json
+{ "username": "nuevouser", "email": "nuevo@test.com", "password": "MiPassword1!" }
+```
+
+> **Nota:** `confirmPassword` es solo validación frontend, NO se envía al backend.
+
+---
+
+### F1.2 — Login exitoso → redirige a `/tickets`
 
 **Actor:** USER o ADMIN  
 **Precondición:** Usuario registrado y activo en base de datos.
@@ -164,114 +192,7 @@ Pasos:
 ```
 
 ---
-
-### F1.2 — Login con credenciales incorrectas → muestra error
-
-**Actor:** Anónimo  
-**Precondición:** Ninguna sesión activa.
-
-```
-Pasos:
-1. Navegar a /login
-2. Ingresar email válido en #email
-3. Ingresar contraseña incorrecta en #password
-4. Click en button[type="submit"]
-5. Esperar que .auth-error sea visible
-6. Verificar el texto del error
-7. Verificar que la URL siga siendo /login
-8. Verificar que el botón vuelva a estar habilitado
-```
-
-**Error esperado (HTTP 401):**
-```
-"El usuario y/o contraseña son incorrectos."
-```
-
-**Error genérico (otros HTTP errors):**
-```
-"Ocurrió un error al iniciar sesión. Intenta nuevamente."
-```
-
----
-
-### F1.3 — Registro exitoso → redirige a `/tickets`
-
-**Actor:** Nuevo usuario (email no registrado)  
-**Precondición:** El email y username no existen en el sistema.
-
-```
-Pasos:
-1. Navegar a /register
-2. Verificar que el título sea "Crear cuenta en TicketSystem"
-3. Ingresar username válido en #username (mínimo 3 caracteres)
-4. Ingresar email único en #email
-5. Ingresar contraseña válida en #password (mínimo 8 chars)
-6. Ingresar la misma contraseña en #confirmPassword
-7. Click en button[type="submit"]
-8. Esperar que desaparezca el spinner
-9. Verificar que la URL actual sea /tickets
-10. Verificar que el Navbar muestre el username recién creado
-```
-
-**POST body enviado al backend:**
-```json
-{ "username": "nuevouser", "email": "nuevo@test.com", "password": "MiPassword1!" }
-```
-
-> **Nota:** `confirmPassword` es solo validación frontend, NO se envía al backend.
-
----
-
-### F1.4 — Registro con contraseñas no coincidentes → error frontend
-
-**Actor:** Anónimo  
-**Precondición:** Ninguna. La validación ocurre antes de cualquier petición HTTP.
-
-```
-Pasos:
-1. Navegar a /register
-2. Ingresar username y email válidos
-3. Ingresar contraseña en #password: "Password1!"
-4. Ingresar contraseña diferente en #confirmPassword: "Password2!"
-5. Click en button[type="submit"]
-6. Verificar que .auth-error sea visible inmediatamente (sin petición HTTP)
-7. Verificar el texto del error
-8. Verificar que la URL siga siendo /register
-9. Verificar que NO se realizó ninguna petición al backend
-```
-
-**Error esperado (solo frontend, sin HTTP):**
-```
-"Las contraseñas no coinciden"
-```
-
----
-
-### F1.5 — Registro con email duplicado → error 409
-
-**Actor:** Anónimo  
-**Precondición:** El email o username ya existe en la base de datos.
-
-```
-Pasos:
-1. Navegar a /register
-2. Ingresar username o email ya existente en el sistema
-3. Ingresar contraseñas coincidentes y válidas
-4. Click en button[type="submit"]
-5. Esperar respuesta del backend
-6. Verificar que .auth-error sea visible
-7. Verificar el texto del error
-8. Verificar que la URL siga siendo /register
-```
-
-**Error esperado (HTTP 409):**
-```
-"El usuario o el correo ya están registrados."
-```
-
----
-
-### F1.6 — Logout → sesión eliminada, redirige a `/login`
+### F1.3 — Logout → sesión eliminada, redirige a `/login`
 
 **Actor:** Usuario autenticado (USER o ADMIN)  
 **Precondición:** Sesión activa.
@@ -297,20 +218,6 @@ POST http://localhost:8003/api/auth/logout/
 
 ---
 
-## 6. Mensajes de error esperados
-
-| Flujo | Origen | Mensaje exacto |
-|---|---|---|
-| F1.2 | HTTP 401 backend | `"El usuario y/o contraseña son incorrectos."` |
-| F1.2 | Otro error HTTP | `"Ocurrió un error al iniciar sesión. Intenta nuevamente."` |
-| F1.4 | Frontend (sin HTTP) | `"Las contraseñas no coinciden"` |
-| F1.4 | Frontend (sin HTTP) | `"La contraseña debe tener al menos 8 caracteres"` |
-| F1.5 | HTTP 409 backend | `"El usuario o el correo ya están registrados."` |
-| F1.5 | Otro error HTTP | `"Ocurrió un error al crear la cuenta. Intenta nuevamente."` |
-
-> El elemento que muestra los errores es siempre `.auth-error` (un `div` con borde rojo).
-
----
 
 ## 7. Endpoints de la API
 

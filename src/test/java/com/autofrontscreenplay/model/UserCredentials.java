@@ -1,8 +1,8 @@
-package com.autofrontscreenplay.screenplay.model;
+package com.autofrontscreenplay.model;
 
 /**
- * Modelo de datos: credenciales de login.
- * Agrupa email y contraseña como unidad de datos de prueba.
+ * Value object: UserCredentials
+ * Encapsula las credenciales de autenticación (email + password).
  */
 public class UserCredentials {
 
@@ -18,6 +18,11 @@ public class UserCredentials {
         return new UserCredentials(email, password);
     }
 
-    public String getEmail() { return email; }
-    public String getPassword() { return password; }
+    public String getEmail() {
+        return email;
+    }
+
+    public String getPassword() {
+        return password;
+    }
 }
