@@ -33,6 +33,7 @@ dependencies {
 
 test {
     useJUnitPlatform()
+    outputs.cacheIf { false }
     testLogging {
         events 'passed', 'skipped', 'failed'
     }
