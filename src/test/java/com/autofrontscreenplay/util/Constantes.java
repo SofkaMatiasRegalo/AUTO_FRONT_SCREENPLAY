@@ -30,6 +30,7 @@ public class Constantes {
     public static final String SELECTOR_NAVBAR_ASSIGNMENTS       = "a[href='/assignments'].navbar__link";
 
     public static final String ACTOR_VISITANTE                   = "Visitante";
+    public static final String CONTEXTO_REGISTRATION_DATA         = "registrationData";
 
     public static final String REGISTERED_USERNAME              = "Sofkau132";
     public static final String REGISTERED_EMAIL                  = "Sofkau132@test.com";

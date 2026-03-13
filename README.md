@@ -1,31 +1,37 @@
 # AUTO_FRONT_SCREENPLAY
 
-## Escenarios de prueba reales probados
+## Flujo E2E actual
 
-Ejecución validada en el runner `AutenticacionTestRunner` con resultado global:
-- Total: 3
-- Exitosos: 3
+La suite de autenticacion se ejecuto con un escenario unico, independiente y autosuficiente (end-to-end):
+
+- Total: 1
+- Exitosos: 1
 - Fallidos: 0
 - Errores: 0
 
-| Feature | Escenario ejecutado | Tag principal | Estado | Tiempo |
-|---|---|---|---|---|
-| Registro de nuevos usuarios | Registro exitoso con datos únicos | `@registro` | OK | 7.354s |
-| Cierre de sesión de usuarios | Cierre de sesión exitoso desde la barra de navegación | `@logout` | OK | 3.727s |
-| Inicio de sesión de usuarios | Login exitoso como usuario registrado | `@login` | OK | 3.784s |
+| Feature | Escenario ejecutado | Tags | Estado |
+|---|---|---|---|
+| Flujo completo de autenticacion de usuarios | Flujo end-to-end de autenticacion exitoso | @critico @happy-path @autenticacion | OK |
 
-### Diagrama Mermaid de escenarios reales probados
+### Flujo del escenario
 
 ```mermaid
-flowchart TB
-    A[AutenticacionTestRunner\n3 escenarios ejecutados] --> B[Registro de nuevos usuarios\nRegistro exitoso con datos únicos\nTag: @registro - Estado: OK - Tiempo: 7.354s]
-    A --> C[Cierre de sesión de usuarios\nCierre de sesión exitoso desde la barra de navegación\nTag: @logout - Estado: OK - Tiempo: 3.727s]
-    A --> D[Inicio de sesión de usuarios\nLogin exitoso como usuario registrado\nTag: @login - Estado: OK - Tiempo: 3.784s]
-
-    B --> E[Resultado global\nExitosos: 3 - Fallidos: 0 - Errores: 0]
-    C --> E
-    D --> E
+flowchart LR
+    A[Accede por primera vez] --> B[Registro con datos unicos]
+    B --> C[Redireccion a tickets]
+    C --> D[Nombre visible en navbar]
+    D --> E[Cierre de sesion]
+    E --> F[Redireccion a login]
+    F --> G[Login con credenciales validas]
+    G --> H[Redireccion a tickets]
+    H --> I[Nombre visible en navbar]
 ```
+
+## Estructura de automatizacion
+
+- Runner: com.autofrontscreenplay.runners.AutenticacionTestRunner
+- Feature principal: src/test/resources/features/autenticacion/01_autenticacion_e2e.feature
+- Step definitions consolidadas: src/test/java/com/autofrontscreenplay/stepdefinitions/AutenticacionStepDefinitions.java
 
 
 ## Dependencias y frameworks clave
@@ -61,13 +67,14 @@ En bash (Git Bash/WSL):
 ### 3) Ejecutar por tags de Cucumber
 
 ```bash
-./gradlew clean test -Dcucumber.filter.tags="@login"
-./gradlew clean test -Dcucumber.filter.tags="@registro"
-./gradlew clean test -Dcucumber.filter.tags="@logout"
+./gradlew clean test -Dcucumber.filter.tags="@autenticacion"
+./gradlew clean test -Dcucumber.filter.tags="@critico"
+./gradlew clean test -Dcucumber.filter.tags="@happy-path"
 ```
 
 ### 4) Ubicación de reportes
 
-- Reporte HTML Gradle: `build/reports/tests/test/index.html`
-- Resultado XML de la corrida: `build/test-results/test/TEST-com.autofrontscreenplay.runners.AutenticacionTestRunner.xml`
+- Reporte HTML Gradle: build/reports/tests/test/index.html
+- Resultado XML de la corrida: build/test-results/test/TEST-com.autofrontscreenplay.runners.AutenticacionTestRunner.xml
+- Reporte Serenity: target/site/serenity/index.html
 
