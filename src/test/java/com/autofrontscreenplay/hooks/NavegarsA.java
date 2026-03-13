@@ -7,11 +7,6 @@ import net.serenitybdd.screenplay.Tasks;
 import net.serenitybdd.screenplay.actions.Open;
 import net.serenitybdd.annotations.Step;
 
-/**
- * Task: NavegarsA
- * Responsabilidad ÚNICA: navegar a una ruta relativa de la aplicación.
- * Centraliza la navegación evitando URLs hardcodeadas en los step definitions.
- */
 public class NavegarsA implements Task {
 
     private final String path;

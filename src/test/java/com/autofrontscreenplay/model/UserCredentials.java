@@ -1,9 +1,5 @@
 package com.autofrontscreenplay.model;
 
-/**
- * Value object: UserCredentials
- * Encapsula las credenciales de autenticación (email + password).
- */
 public class UserCredentials {
 
     private final String email;

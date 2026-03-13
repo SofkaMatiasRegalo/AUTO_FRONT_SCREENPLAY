@@ -5,9 +5,6 @@ import io.cucumber.java.Before;
 import net.serenitybdd.screenplay.actors.OnStage;
 import net.serenitybdd.screenplay.actors.OnlineCast;
 
-/**
- * Cucumber Hooks para gestión del ciclo de vida del Actor y el Stage.
- */
 public class HooksStepDefinitions {
 
     @Before

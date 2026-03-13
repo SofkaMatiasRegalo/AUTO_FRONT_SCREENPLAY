@@ -9,11 +9,6 @@ import net.serenitybdd.screenplay.actions.Click;
 import net.serenitybdd.screenplay.actions.Enter;
 import net.serenitybdd.annotations.Step;
 
-/**
- * Task: IniciarSesion
- * Responsabilidad ÚNICA: llenar el formulario de login y enviar las credenciales.
- * No contiene localizadores (delegados a LoginUI) ni aserciones (delegadas a Questions).
- */
 public class IniciarSesion implements Task {
 
     private final UserCredentials credentials;
@@ -24,10 +19,6 @@ public class IniciarSesion implements Task {
 
     public static IniciarSesion conCredenciales(UserCredentials credentials) {
         return Tasks.instrumented(IniciarSesion.class, credentials);
-    }
-
-    public static IniciarSesion conCredenciales(String email, String password) {
-        return Tasks.instrumented(IniciarSesion.class, UserCredentials.of(email, password));
     }
 
     @Step("{0} inicia sesión con el email '#credentials.email'")

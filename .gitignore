@@ -5,7 +5,7 @@ build/
 !**/src/test/**/build/
 .kotlin
 .grandle/
-
+.gradle/
 ### IntelliJ IDEA ###
 .idea/
 .idea/modules.xml

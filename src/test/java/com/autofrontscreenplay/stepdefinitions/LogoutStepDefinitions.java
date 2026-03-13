@@ -1,6 +1,8 @@
 package com.autofrontscreenplay.stepdefinitions;
 
-import com.autofrontscreenplay.fixtures.TestData;
+import com.autofrontscreenplay.fixtures.UsuarioRegistradoContexto;
+import com.autofrontscreenplay.model.UserCredentials;
+import com.autofrontscreenplay.model.RegistrationData;
 import com.autofrontscreenplay.hooks.NavegarsA;
 import com.autofrontscreenplay.questions.LaUrlActual;
 import com.autofrontscreenplay.tasks.CerrarSesion;
@@ -15,12 +17,15 @@ import net.serenitybdd.screenplay.ensure.Ensure;
 
 public class LogoutStepDefinitions {
 
+    private RegistrationData registrationData;
+
     @Given("que un usuario tiene una sesión activa")
     public void unUsuarioConSesionActiva() {
+        registrationData = UsuarioRegistradoContexto.obtenerRequerido();
         OnStage.theActorCalled(Constantes.ACTOR_VISITANTE)
                 .attemptsTo(
                     NavegarsA.laPaginaDeLogin(),
-                    IniciarSesion.conCredenciales(TestData.REGISTERED_USER_CREDENTIALS)
+                    IniciarSesion.conCredenciales(UserCredentials.of(registrationData.getEmail(), registrationData.getPassword()))
                 );
     }
 

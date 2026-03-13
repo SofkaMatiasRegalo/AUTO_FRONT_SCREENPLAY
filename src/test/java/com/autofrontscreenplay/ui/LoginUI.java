@@ -3,11 +3,6 @@ package com.autofrontscreenplay.ui;
 import com.autofrontscreenplay.util.Constantes;
 import net.serenitybdd.screenplay.targets.Target;
 
-/**
- * UI Layer — LoginPage (/login)
- * Responsabilidad ÚNICA: exponer localizadores (Targets) de la pantalla de login.
- * PROHIBIDO: lógica de negocio, aserciones o acciones.
- */
 public class LoginUI {
 
     private LoginUI() {}

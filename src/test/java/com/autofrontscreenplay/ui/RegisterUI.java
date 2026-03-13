@@ -3,11 +3,6 @@ package com.autofrontscreenplay.ui;
 import com.autofrontscreenplay.util.Constantes;
 import net.serenitybdd.screenplay.targets.Target;
 
-/**
- * UI Layer — RegisterPage (/register)
- * Responsabilidad ÚNICA: exponer localizadores (Targets) de la pantalla de registro.
- * PROHIBIDO: lógica de negocio, aserciones o acciones.
- */
 public class RegisterUI {
 
     private RegisterUI() {}

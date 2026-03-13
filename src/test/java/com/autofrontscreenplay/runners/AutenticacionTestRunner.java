@@ -7,11 +7,6 @@ import org.junit.platform.suite.api.Suite;
 
 import static io.cucumber.junit.platform.engine.Constants.*;
 
-/**
- * JUnit Platform Suite Runner — F1 Autenticación
- * Ejecuta: ./gradlew clean test aggregate
- * Reporte:  target/site/serenity/index.html
- */
 @Suite
 @IncludeEngines("cucumber")
 @SelectClasspathResource("features/autenticacion")

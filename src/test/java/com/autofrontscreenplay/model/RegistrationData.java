@@ -1,10 +1,5 @@
 package com.autofrontscreenplay.model;
 
-/**
- * Value object: RegistrationData
- * Encapsula los datos del formulario de registro de nuevo usuario.
- * confirmPassword es solo validación frontend y NO se envía al backend.
- */
 public class RegistrationData {
 
     private final String username;

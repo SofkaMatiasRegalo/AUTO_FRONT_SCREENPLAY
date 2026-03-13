@@ -3,11 +3,6 @@ package com.autofrontscreenplay.ui;
 import com.autofrontscreenplay.util.Constantes;
 import net.serenitybdd.screenplay.targets.Target;
 
-/**
- * UI Layer — NavBarComponent (global, post-autenticación)
- * Responsabilidad ÚNICA: exponer localizadores (Targets) de la barra de navegación.
- * PROHIBIDO: lógica de negocio, aserciones o acciones.
- */
 public class NavBarUI {
 
     private NavBarUI() {}

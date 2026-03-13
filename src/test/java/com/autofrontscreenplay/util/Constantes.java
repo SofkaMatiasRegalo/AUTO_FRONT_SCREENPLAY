@@ -31,11 +31,11 @@ public class Constantes {
 
     public static final String ACTOR_VISITANTE                   = "Visitante";
 
-    public static final String REGISTERED_USERNAME              = "Sofkau12";
-    public static final String REGISTERED_EMAIL                  = "Sofkau12@test.com";
+    public static final String REGISTERED_USERNAME              = "Sofkau132";
+    public static final String REGISTERED_EMAIL                  = "Sofkau132@test.com";
     public static final String REGISTERED_PASSWORD               = "NewUser1!1";
 
-    public static final String REGISTRO_NUEVO_USUARIO_PREFIX     = "Sofkau12";
+    public static final String REGISTRO_NUEVO_USUARIO_PREFIX     = "Sofkau132";
     public static final String REGISTRO_NUEVO_USUARIO_DOMINIO    = "@test.com";
     public static final String REGISTRO_NUEVO_USUARIO_PASSWORD   = "NewUser1!1";
 }

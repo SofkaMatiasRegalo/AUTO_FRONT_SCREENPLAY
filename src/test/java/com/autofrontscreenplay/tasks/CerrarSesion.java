@@ -7,11 +7,6 @@ import net.serenitybdd.screenplay.Tasks;
 import net.serenitybdd.screenplay.actions.Click;
 import net.serenitybdd.annotations.Step;
 
-/**
- * Task: CerrarSesion
- * Responsabilidad ÚNICA: hacer click en el botón de logout desde la navbar.
- * Dispara POST /api/auth/logout/ a través de la acción del frontend.
- */
 public class CerrarSesion implements Task {
 
     protected CerrarSesion() {}
